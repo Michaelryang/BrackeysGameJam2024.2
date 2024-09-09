@@ -1,2 +1,4 @@
 # BrackeysGameJam2024.2
-Game Jam
+
+
+by: Michael Yang, Ahmed Mushtaha, Bruce Ye

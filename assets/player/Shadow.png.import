@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdqiphr4nj28d"
-path="res://.godot/imported/knight.png-accfc13147dbb074f47e91cf7b11603a.ctex"
+uid="uid://5rqs7evctjyc"
+path="res://.godot/imported/Shadow.png-53ff9027e57315e461bc80def8a156a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/knight.png"
-dest_files=["res://.godot/imported/knight.png-accfc13147dbb074f47e91cf7b11603a.ctex"]
+source_file="res://assets/player/Shadow.png"
+dest_files=["res://.godot/imported/Shadow.png-53ff9027e57315e461bc80def8a156a8.ctex"]
 
 [params]
 
