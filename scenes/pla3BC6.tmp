@@ -29,18 +29,18 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-motion_mode = 1
+position = Vector2(0, -28)
 script = ExtResource("1_xeo3a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 23)
 shape = SubResource("RectangleShape2D_365ny")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_qe66k")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.389005
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 8)
-zoom = Vector2(2, 2)

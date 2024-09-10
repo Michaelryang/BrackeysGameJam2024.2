@@ -14,20 +14,22 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _move_raft(v: Vector2, delta: float) -> void:
+func _move_raft(v: Vector2) -> void:
 	var old_position = raft_body.position
 	raft_body.velocity = v
 	
-	if anchor:
-		raft_body.velocity *= anchor.speed_multiplier
-		raft_body.move_and_slide()
-		if raft_body.position.distance_squared_to(old_position) > anchor.anchor_radius * anchor.anchor_radius:
-			raft_body.position = old_position
-	else:
-		raft_body.move_and_slide()
-		
-		
+	#if anchor:
+	#	raft_body.velocity *= anchor.speed_multiplier
+	#	raft_body.move_and_slide()
+	#	if raft_body.position.distance_squared_to(old_position) > anchor.anchor_radius * anchor.anchor_radius:
+	#		raft_body.position = old_position
+	#else:
+	#	raft_body.move_and_slide()
+	raft_body.move_and_slide()
+	position = raft_body.position
+	
 	var delta_pos = raft_body.position - old_position
+	print(delta_pos)
 	
 	for _i in self.get_children():
 		if _i.name != "RaftBody":
@@ -38,5 +40,10 @@ func _move_raft(v: Vector2, delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	_move_raft(Vector2(20, 20), delta)
+	_move_raft(Vector2(-20, -20))
+	print("raft position")
+	print(position)
+	print("raftbody position")
+	print($RaftBody.position)
+	
 	pass

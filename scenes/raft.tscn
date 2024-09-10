@@ -25,9 +25,9 @@ animations = [{
 script = ExtResource("1_ix3lm")
 
 [node name="RaftBody" type="CharacterBody2D" parent="."]
-scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 2
+motion_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RaftBody"]
 shape = SubResource("RectangleShape2D_ta54e")
@@ -38,6 +38,7 @@ sprite_frames = SubResource("SpriteFrames_finc5")
 [node name="PlayerCageBody" type="CharacterBody2D" parent="."]
 collision_layer = 4
 collision_mask = 4
+motion_mode = 1
 
 [node name="RightBox" type="CollisionShape2D" parent="PlayerCageBody"]
 position = Vector2(111, 8)

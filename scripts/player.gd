@@ -1,12 +1,11 @@
-class_name Player extends Node2D
+class_name Player extends CharacterBody2D
 
-@onready var player_body : CharacterBody2D = get_node("PlayerBody")
 @onready var raft : Raft = get_tree().get_first_node_in_group("Raft")
 @export var move_speed: float = 100.0
 var interact_radius : float = 200.0
 
 func _draw():
-	draw_circle(player_body.position, interact_radius, Color("red"), false, 1.0)
+	draw_circle(position, interact_radius, Color("red"), false, 1.0)
 
 func _input(event):
 	#print(event.as_text())
@@ -36,13 +35,9 @@ func _input(event):
 
 func _deploy_anchor() -> void:
 	var anchor_scene : PackedScene = preload("res://scenes/anchor.tscn")
-	var anchor = anchor_scene.instantiate()
-	anchor.position = get_global_mouse_position()
-	add_child(anchor)
-	print(anchor)
-	print(anchor.get_parent())
-	print(anchor.position)
-	print(player_body.position)
+	var anchor : Anchor = anchor_scene.instantiate()
+	anchor.position = position
+	get_parent().add_child(anchor)
 	
 	if anchor.has_method("_activate"):
 		anchor._activate()
@@ -53,7 +48,8 @@ func _ready() -> void:
 
 func _move_player(delta_pos: Vector2) -> void:
 	queue_redraw()
-	player_body.position += delta_pos
+	
+	position = raft.position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -63,10 +59,13 @@ func _physics_process(delta: float) -> void:
 	#for _i in self.get_children():
 	#	print(_i)
 	
-	player_body.velocity.x = x_direction * move_speed
-	player_body.velocity.y = y_direction * move_speed
+	velocity.x = x_direction * move_speed
+	velocity.y = y_direction * move_speed
 	
 	#print(player_body.velocity)
-	#print(position)
+	print("player position")
+	print(position)
+	print("collision position")
+	print($CollisionShape2D.position)
 	
-	player_body.move_and_slide()
+	#move_and_slide()
