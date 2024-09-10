@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bx3mfp1kvttqv"]
+[gd_scene load_steps=7 format=3 uid="uid://bx3mfp1kvttqv"]
 
 [ext_resource type="Texture2D" uid="uid://u4kr0q2sh8b4" path="res://assets/raft/raftset.png" id="1_bmvin"]
 [ext_resource type="Script" path="res://scripts/raft.gd" id="1_ix3lm"]
+[ext_resource type="Script" path="res://scripts/raft_player_cage.gd" id="3_1s2uu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ta54e"]
 size = Vector2(65.25, 65)
@@ -39,6 +40,7 @@ sprite_frames = SubResource("SpriteFrames_finc5")
 collision_layer = 4
 collision_mask = 4
 motion_mode = 1
+script = ExtResource("3_1s2uu")
 
 [node name="RightBox" type="CollisionShape2D" parent="PlayerCageBody"]
 position = Vector2(73, 1)

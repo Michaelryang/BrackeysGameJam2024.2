@@ -2,13 +2,13 @@ class_name Anchor extends Node2D
 
 @onready var raft : Raft = get_tree().get_first_node_in_group("Raft")
 var num_uses : int = 1
-var speed_multiplier : float = 0.1
-@export var anchor_radius : float = 30.0
+var speed_multiplier : float = 0.8
+@export var anchor_radius : float = 70.0
 
 signal sig_anchor_dropped(anchor: Anchor)
 
 func _draw():
-	draw_circle(position, anchor_radius, Color("green"), false, 1.0)
+	draw_circle(Vector2(0, 0), anchor_radius, Color("green"), false, 1.0)
 
 func _activate() -> void:
 	print("anchor activated")

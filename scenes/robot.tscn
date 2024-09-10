@@ -1,9 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd13787wejriv"]
+[gd_scene load_steps=7 format=3 uid="uid://dd13787wejriv"]
 
 [ext_resource type="Script" path="res://scripts/robot.gd" id="1_fm7iy"]
+[ext_resource type="Texture2D" uid="uid://cgcwkmgtsb2ea" path="res://assets/player/Prototype_Character.png" id="2_mfns0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqdet"]
-size = Vector2(26, 8)
+size = Vector2(12, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2iemq"]
+atlas = ExtResource("2_mfns0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj4v4"]
+atlas = ExtResource("2_mfns0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khu0y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2iemq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj4v4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Robot" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 4
@@ -16,3 +39,8 @@ zoom = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wqdet")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_khu0y")
+autoplay = "default"
