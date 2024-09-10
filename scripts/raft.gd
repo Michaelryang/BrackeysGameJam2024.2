@@ -1,10 +1,10 @@
 class_name Raft extends Node2D
 
-#@onready var player : Player = get_tree().get_first_node_in_group("Player")
 @onready var raft_body : CharacterBody2D = get_node("RaftBody")
+@onready var player : CharacterBody2D = get_tree().get_first_node_in_group("Player")
 var anchor : Anchor = null
 
-signal sig_raft_moved(delta_pos: Vector2)
+signal moved(v : Vector2)
 
 func set_anchored(anchor : Anchor = null):
 	self.anchor = anchor
@@ -26,8 +26,8 @@ func _move_raft(v: Vector2) -> void:
 	#else:
 	#	raft_body.move_and_slide()
 	raft_body.move_and_slide()
-	position = raft_body.position
-	
+
+	#moved.emit(raft_body.position - old_position)
 	var delta_pos = raft_body.position - old_position
 	print(delta_pos)
 	
@@ -36,11 +36,11 @@ func _move_raft(v: Vector2) -> void:
 			if _i is CharacterBody2D:
 				_i.position += delta_pos
 				
-	sig_raft_moved.emit(delta_pos)
+	player.position += delta_pos
 	
 
 func _physics_process(delta: float) -> void:
-	_move_raft(Vector2(-20, -20))
+	_move_raft(Vector2(20, 0))
 	print("raft position")
 	print(position)
 	print("raftbody position")

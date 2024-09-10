@@ -3,7 +3,7 @@ class_name Anchor extends Node2D
 @onready var raft : Raft = get_tree().get_first_node_in_group("Raft")
 var num_uses : int = 1
 var speed_multiplier : float = 0.1
-@export var anchor_radius : float = 10.0
+@export var anchor_radius : float = 30.0
 
 signal sig_anchor_dropped(anchor: Anchor)
 

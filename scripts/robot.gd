@@ -1,4 +1,4 @@
-class_name Player extends CharacterBody2D
+extends CharacterBody2D
 
 @onready var raft : Raft = get_tree().get_first_node_in_group("Raft")
 @export var move_speed: float = 100.0
@@ -44,12 +44,13 @@ func _deploy_anchor() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	raft.sig_raft_moved.connect(_move_player)
+	raft.moved.connect(_move_player)
 
-func _move_player(delta_pos: Vector2) -> void:
-	queue_redraw()
+func _move_player(v: Vector2) -> void:
 	
-	position = raft.position
+	velocity = v
+	move_and_slide()
+	queue_redraw()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -68,4 +69,4 @@ func _physics_process(delta: float) -> void:
 	print("collision position")
 	print($CollisionShape2D.position)
 	
-	#move_and_slide()
+	move_and_slide()

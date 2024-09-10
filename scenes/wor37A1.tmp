@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=4 uid="uid://suhjv4qojbbm"]
 
+[ext_resource type="PackedScene" uid="uid://yfb3u6lr80ni" path="res://scenes/player.tscn" id="1_1vcby"]
 [ext_resource type="Script" path="res://scripts/anchor.gd" id="1_yije4"]
 [ext_resource type="PackedScene" uid="uid://bx3mfp1kvttqv" path="res://scenes/raft.tscn" id="2_oc0fs"]
 [ext_resource type="TileSet" uid="uid://6lsn8hpc2cta" path="res://assets/world/tempset.tres" id="3_mt03i"]
 [ext_resource type="PackedScene" uid="uid://cnbtt8fesn024" path="res://scenes/anchor.tscn" id="5_1thlv"]
-[ext_resource type="PackedScene" uid="uid://dd13787wejriv" path="res://scenes/robot.tscn" id="6_0xpgy"]
 
 [node name="WorldTest1" type="Node2D"]
 script = ExtResource("1_yije4")
@@ -23,8 +23,10 @@ tile_set = ExtResource("3_mt03i")
 [node name="Anchor" parent="." instance=ExtResource("5_1thlv")]
 position = Vector2(-87, 146)
 
-[node name="Robot" parent="." instance=ExtResource("6_0xpgy")]
+[node name="Player" parent="." instance=ExtResource("1_1vcby")]
+z_index = 3
+position = Vector2(77, -211)
 
 [node name="Raft" parent="." instance=ExtResource("2_oc0fs")]
 z_index = 2
-position = Vector2(9, 8)
+position = Vector2(76, -209)
