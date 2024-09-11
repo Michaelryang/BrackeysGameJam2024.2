@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @onready var raft : Raft = get_tree().get_first_node_in_group("Raft")
 @export var move_speed: float = 100.0
@@ -100,28 +100,22 @@ func _switch_raft_land() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	raft.moved.connect(_move_player)
+	raft.moved.connect(_move_player_from_raft)
+	var propeller_scene : PackedScene = preload("res://scenes/hand_propeller.tscn")
+	var propeller : Propeller = propeller_scene.instantiate()
+	add_child(propeller)
 
-func _move_player(v: Vector2) -> void:
+
+func _move_player_from_raft(v: Vector2) -> void:
 	if on_raft:
 		position += v
 	queue_redraw()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	var x_direction: float = Input.get_axis("move_left", "move_right")
 	var y_direction: float = Input.get_axis("move_up", "move_down")
 	
-	#for _i in self.get_children():
-	#	print(_i)
-	
 	velocity.x = x_direction * move_speed
 	velocity.y = y_direction * move_speed
-	
-	#print(player_body.velocity)
-	#print("player position")
-	#print(position)
-	#print("collision position")
-	#print($CollisionShape2D.position)
 	
 	move_and_slide()

@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bx3mfp1kvttqv"]
+
+[ext_resource type="Texture2D" uid="uid://u4kr0q2sh8b4" path="res://assets/raft/raftset.png" id="1_bmvin"]
+[ext_resource type="Script" path="res://scripts/raft.gd" id="1_ix3lm"]
+[ext_resource type="Script" path="res://scripts/raft_player_cage.gd" id="3_1s2uu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ta54e"]
+size = Vector2(65.25, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e31i6"]
+atlas = ExtResource("1_bmvin")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_finc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e31i6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rqrh"]
+size = Vector2(68, 68)
+
+[node name="Raft" type="Node2D" groups=["Raft"]]
+script = ExtResource("1_ix3lm")
+
+[node name="RaftBody" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RaftBody"]
+shape = SubResource("RectangleShape2D_ta54e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RaftBody"]
+sprite_frames = SubResource("SpriteFrames_finc5")
+
+[node name="PlayerCageBody" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("3_1s2uu")
+
+[node name="RightBox" type="CollisionShape2D" parent="PlayerCageBody"]
+position = Vector2(73, 1)
+scale = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_ta54e")
+
+[node name="LeftBox" type="CollisionShape2D" parent="PlayerCageBody"]
+position = Vector2(-72, 2)
+scale = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_ta54e")
+
+[node name="TopBox" type="CollisionShape2D" parent="PlayerCageBody"]
+position = Vector2(-1, -70)
+rotation = 1.5708
+scale = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_ta54e")
+
+[node name="BottomBox" type="CollisionShape2D" parent="PlayerCageBody"]
+position = Vector2(1, 70)
+rotation = 1.5708
+scale = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_ta54e")
+
+[node name="RaftArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RaftArea2D"]
+shape = SubResource("RectangleShape2D_0rqrh")

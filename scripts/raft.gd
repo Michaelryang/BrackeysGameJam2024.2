@@ -1,7 +1,8 @@
 class_name Raft extends Node2D
 
 @onready var raft_body : CharacterBody2D = get_node("RaftBody")
-@onready var player : CharacterBody2D = get_tree().get_first_node_in_group("Player")
+@onready var player : Player = get_tree().get_first_node_in_group("Player")
+var raft_acceleration : Vector2 = Vector2.ZERO
 var anchor : Anchor
 var raft_anchor_point : Vector2 # this is NOT the anchor position, but rather the position of the raft when the anchor is dropped
 
@@ -52,7 +53,12 @@ func _disable_raft_player_border(is_disabled: bool) -> void:
 	$PlayerCageBody._toggle_enabled(is_disabled)
 
 
+func _apply_acceleration(new_accel : Vector2) -> void:
+	raft_acceleration += new_accel
+
 func _physics_process(delta: float) -> void:
-	_move_raft(Vector2(20, 20), delta)
+	raft_acceleration *= 0.8
+	var total_velocity = raft_acceleration * delta
+	_move_raft(total_velocity, delta)
 	queue_redraw()
 	pass
