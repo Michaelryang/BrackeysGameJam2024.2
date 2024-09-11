@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var raft : Raft = get_tree().get_first_node_in_group("Raft")
 @export var move_speed: float = 100.0
-@onready var t
+@onready var mouse_collider : Area2D = get_tree().get_first_node_in_group("MouseCollider")
 var interact_radius : float = 200.0
 var on_raft : bool = true
 
@@ -40,6 +40,9 @@ func _input(event):
 		print("end switch raft/land")
 
 func _toggle_anchor() -> void:
+	if !on_raft:
+		return
+	
 	if raft.anchor:
 		raft.anchor._reel_anchor()
 	else:
@@ -69,7 +72,15 @@ func _raft_to_land() -> void:
 	raft._disable_raft_player_border(true)
 	set_collision_mask_value(1, true)
 	
-	#if ()
+func _land_to_raft() -> void:
+	var object_list = mouse_collider._get_objects_at_mouse()
+	print(object_list)
+	for _i in object_list:
+		if _i.get_parent() is Raft:
+			position = get_global_mouse_position()
+			on_raft = true
+			raft._disable_raft_player_border(false)
+			set_collision_mask_value(1, false)
 	
 func _switch_raft_land() -> void:
 	if !raft.anchor:
@@ -84,14 +95,16 @@ func _switch_raft_land() -> void:
 	
 	if on_raft:
 		_raft_to_land()
-	
+	else:
+		_land_to_raft()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	raft.moved.connect(_move_player)
 
 func _move_player(v: Vector2) -> void:
-	position += v
+	if on_raft:
+		position += v
 	queue_redraw()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

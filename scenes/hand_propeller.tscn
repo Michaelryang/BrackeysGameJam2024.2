@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://df2o3lmcr1wj3"]
+
+[ext_resource type="Script" path="res://scripts/hand_propeller.gd" id="1_aewvt"]
+[ext_resource type="Texture2D" uid="uid://dyubg1ultdb2a" path="res://assets/tools/hand_propeller/hand_propeller.png" id="1_op7fg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6cq5"]
+atlas = ExtResource("1_op7fg")
+region = Rect2(0, 0, 16, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ud0ls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6cq5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HandPropeller" type="Node2D"]
+script = ExtResource("1_aewvt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_ud0ls")

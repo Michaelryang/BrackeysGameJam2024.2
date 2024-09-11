@@ -1,12 +1,11 @@
 [gd_scene load_steps=5 format=4 uid="uid://suhjv4qojbbm"]
 
-[ext_resource type="Script" path="res://scripts/anchor.gd" id="1_yije4"]
 [ext_resource type="PackedScene" uid="uid://bx3mfp1kvttqv" path="res://scenes/raft.tscn" id="2_oc0fs"]
 [ext_resource type="TileSet" uid="uid://6lsn8hpc2cta" path="res://assets/world/tempset.tres" id="3_mt03i"]
+[ext_resource type="PackedScene" uid="uid://cktnom8ah08wl" path="res://scenes/mouse_collision.tscn" id="5_w7vhy"]
 [ext_resource type="PackedScene" uid="uid://dd13787wejriv" path="res://scenes/robot.tscn" id="6_0xpgy"]
 
 [node name="WorldTest1" type="Node2D"]
-script = ExtResource("1_yije4")
 
 [node name="LandLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
@@ -28,3 +27,5 @@ position = Vector2(-95, -65)
 unique_name_in_owner = true
 z_index = 2
 position = Vector2(-95, -65)
+
+[node name="MouseArea2D" parent="." instance=ExtResource("5_w7vhy")]

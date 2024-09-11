@@ -7,15 +7,11 @@ var speed_multiplier : float = 0.8
 
 signal sig_anchor_dropped(anchor: Anchor)
 
-func _draw():
-	draw_circle(Vector2(0, 0), anchor_radius, Color("green"), false, 1.0)
-
 func _activate() -> void:
 	print("anchor activated")
 	sig_anchor_dropped.connect(raft.set_anchored)
 	_drop_anchor()
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
@@ -28,6 +24,5 @@ func _reel_anchor() -> void:
 	if num_uses <= 0:
 		queue_free()
 	
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

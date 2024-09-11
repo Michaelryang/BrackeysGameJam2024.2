@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cktnom8ah08wl"]
+
+[ext_resource type="Script" path="res://scripts/mouse_collision.gd" id="1_bp3mh"]
+[ext_resource type="Texture2D" uid="uid://cfsahs7h20xhp" path="res://assets/mouse_reticle.png" id="2_wile8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr2e3"]
+radius = 2.0
+
+[node name="MouseArea2D" type="Area2D" groups=["MouseCollider"]]
+z_index = 5
+script = ExtResource("1_bp3mh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qr2e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wile8")
