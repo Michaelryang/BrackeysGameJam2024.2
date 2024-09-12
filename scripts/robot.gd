@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 @onready var raft : Raft = get_tree().get_first_node_in_group("Raft")
-@export var move_speed: float = 100.0
+@export var move_speed: float = 1500.0
 @onready var mouse_collider : Area2D = get_tree().get_first_node_in_group("MouseCollider")
 var interact_radius : float = 200.0
 var on_raft : bool = true
