@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cllbdharueeru"]
+
+[ext_resource type="Shader" path="res://shaders/rain_shader.gdshader" id="1_v0p2y"]
+[ext_resource type="Script" path="res://scripts/rain_shader_script.gd" id="2_83tpn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctupk"]
+shader = ExtResource("1_v0p2y")
+shader_parameter/rain_amount = 200.0
+shader_parameter/near_rain_length = 0.1
+shader_parameter/far_rain_length = 0.05
+shader_parameter/near_rain_width = 0.3
+shader_parameter/far_rain_width = 0.1
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0.721569, 0.839216, 0.858824, 1)
+shader_parameter/base_rain_speed = 0.8
+shader_parameter/additional_rain_speed = 0.5
+shader_parameter/slant = 0.2
+
+[node name="RainShader" type="ColorRect"]
+material = SubResource("ShaderMaterial_ctupk")
+offset_left = -2.0
+offset_top = 3.0
+offset_right = 959.0
+offset_bottom = 656.0
+color = Color(0.568627, 1, 1, 0)
+script = ExtResource("2_83tpn")

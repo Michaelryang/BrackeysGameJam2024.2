@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvyx6rsdapy1w"]
+
+[ext_resource type="Script" path="res://scripts/global_weather_manager.gd" id="1_rgr5v"]
+
+[node name="GlobalWeatherManager" type="Node2D"]
+script = ExtResource("1_rgr5v")
+night_color = Color(0.490194, 0.612804, 0.906047, 1)
+dawn_color = Color(0.948757, 0.807617, 0.418678, 1)
+dusk_color = Color(0.877184, 0.723693, 0.276931, 1)

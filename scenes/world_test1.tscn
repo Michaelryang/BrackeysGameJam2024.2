@@ -1,12 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://suhjv4qojbbm"]
+[gd_scene load_steps=9 format=4 uid="uid://suhjv4qojbbm"]
 
 [ext_resource type="Script" path="res://scripts/land_layer.gd" id="2_dnylc"]
 [ext_resource type="PackedScene" uid="uid://bx3mfp1kvttqv" path="res://scenes/raft.tscn" id="2_oc0fs"]
 [ext_resource type="TileSet" uid="uid://6lsn8hpc2cta" path="res://assets/world/tempset.tres" id="3_mt03i"]
 [ext_resource type="PackedScene" uid="uid://cktnom8ah08wl" path="res://scenes/mouse_collision.tscn" id="5_w7vhy"]
+[ext_resource type="PackedScene" uid="uid://dvyx6rsdapy1w" path="res://scenes/global_weather_manager.tscn" id="5_xqjc0"]
 [ext_resource type="PackedScene" uid="uid://dd13787wejriv" path="res://scenes/robot.tscn" id="6_0xpgy"]
+[ext_resource type="PackedScene" uid="uid://cllbdharueeru" path="res://scenes/rain_shader.tscn" id="6_3ixsn"]
+[ext_resource type="PackedScene" uid="uid://014weq4rpoee" path="res://scenes/debug_text.tscn" id="6_aycb8"]
+[ext_resource type="PackedScene" uid="uid://dd3rjcxmo2etw" path="res://scenes/weather_layer_modulate.tscn" id="7_dpud2"]
 
-[node name="WorldTest1" type="Node2D"]
+[node name="WorldTest1" type="Node2D" groups=["Levels"]]
+
+[node name="GlobalWeatherManager" parent="." groups=["WeatherManager"] instance=ExtResource("5_xqjc0")]
 
 [node name="LandLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
@@ -29,3 +35,20 @@ z_index = 2
 position = Vector2(38, -65)
 
 [node name="MouseArea2D" parent="." instance=ExtResource("5_w7vhy")]
+position = Vector2(-75, 88)
+
+[node name="WeatherLayer" type="CanvasLayer" parent="." groups=["WeatherLayer"]]
+layer = 0
+
+[node name="RainShader" parent="WeatherLayer" instance=ExtResource("6_3ixsn")]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="WeatherLayerModulate" parent="WeatherLayer" instance=ExtResource("7_dpud2")]
+
+[node name="UILayer" type="CanvasLayer" parent="." groups=["UILayer"]]
+unique_name_in_owner = true
+
+[node name="DebugText" parent="UILayer" instance=ExtResource("6_aycb8")]
+text = "hellooo
+"

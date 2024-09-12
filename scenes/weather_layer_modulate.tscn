@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd3rjcxmo2etw"]
+
+[ext_resource type="Script" path="res://scripts/weather_layer_modulate.gd" id="1_pt16j"]
+
+[node name="WeatherLayerModulate" type="CanvasModulate"]
+script = ExtResource("1_pt16j")

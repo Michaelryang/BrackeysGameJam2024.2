@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://014weq4rpoee"]
+
+[node name="DebugText" type="RichTextLabel"]
+offset_right = 492.0
+offset_bottom = 197.0
+text = "debug text"
+fit_content = true
